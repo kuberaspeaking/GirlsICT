@@ -117,11 +117,11 @@ uint8_t get_bubble_address(void);
 bubble_class_t detect_bubble_class(uint8_t address);
 //strRGB_t get_color_val(colors_names_t color);
 //void perform_action(routine_item_t item);
-void excute_next_routine_item(routine_item_t* items);
+void excute_next_routine_item(const routine_item_t* items);
 bool receive_bubble_address(uint8_t* address);
 void communicate_with_bubbles();
 //void change_routine_array(bubble_class_t bubble_class);
-routine_item_t* get_bubble_routine();
+const routine_item_t* get_bubble_routine();
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

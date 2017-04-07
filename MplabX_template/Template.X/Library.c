@@ -97,7 +97,12 @@
  }
 #endif
 
-
+/*
+ * PWM limits
+ */  
+#define PWM_MAX 255
+#define PWM_MIN 0    
+ 
 /* 
  * bubble address
  */
@@ -107,10 +112,24 @@ static uint8_t bubble_address = 0;
  */
 static uint8_t bubble_pair_address = 190;
 
+static uint8_t current_index = -1;
+static uint8_t current_num_of_repeats = 0;
+static uint8_t loop_direction = 1;
+
+const routine_item_t* routine_array[num_of_bubble_classes] = {
+            error_routine,
+            mentor_bubble_routine,
+            student_bubble_routine,
+            treasure_bubble_routine,
+            special_bubble_routine,
+            paired_bubble_routine,
+            error_routine
+        };
+
 /* 
  * bubble current routine
  */
-routine_item_t* current_routine_array;
+const routine_item_t* current_routine_array;
 
 /* 
  * Color table
@@ -304,7 +323,7 @@ static void perform_action(routine_item_t item){
     else{
         delay_time = item.action_duration_ms;
     } 
-    static uint8_t loop_direction = 1;
+    
     switch(item.action){
         case color_off:
            load_color(get_color_val(off),item.b_level);
@@ -351,12 +370,11 @@ static void perform_action(routine_item_t item){
     * execute a list of routine items
     */
    
-   void excute_next_routine_item(routine_item_t* items){
-       static uint8_t current_index = -1;
-       static uint8_t current_num_of_repeats = 0;
-       if(current_num_of_repeats > 0){
+   void excute_next_routine_item(const routine_item_t* items){
+       routine_item_t item = items[current_index];
+       if(current_num_of_repeats > 0){           
            // fix routine end action
-           perform_action(items[current_index]);
+           perform_action(item);
            current_num_of_repeats--;
        }
        else
@@ -367,26 +385,19 @@ static void perform_action(routine_item_t item){
               current_index = 0;
           }
           if(current_index == 0){
-              current_num_of_repeats = items[current_index].num_of_repeats;
+              current_num_of_repeats = item.num_of_repeats;
           }
        }
    }
   
    
-   void change_routine_array(bubble_class_t bubble_class){
-        routine_item_t* routine_array[num_of_bubble_classes] = {
-            error_routine,
-            mentor_bubble_routine,
-            student_bubble_routine,
-            treasure_bubble_routine,
-            special_bubble_routine,
-            paired_bubble_routine,
-            error_routine
-        };
-       current_routine_array = routine_array[bubble_class];
-   }
+void change_routine_array(bubble_class_t bubble_class){
+    current_index = -1;
+    current_num_of_repeats = 0;
+    current_routine_array = routine_array[bubble_class];      
+}
 
-   routine_item_t* get_bubble_routine(){
+   const routine_item_t* get_bubble_routine(){
        return current_routine_array;
    }
    

@@ -14,11 +14,11 @@ int main(void) {
     system_init();
 #endif
     
-    routine_item_t* items = get_bubble_routine();
+    const routine_item_t* items = get_bubble_routine();
      
     while(1)
     {        
-        communicate_with_bubbles();
+//        communicate_with_bubbles();
         excute_next_routine_item(items);
     }  
 
