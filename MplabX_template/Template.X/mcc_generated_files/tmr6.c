@@ -13,7 +13,7 @@
   @Description
     This source file provides APIs for TMR6.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.0
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16LF1614
         Driver Version    :  1.00
     The generated drivers are tested against the following:

@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.0
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16LF1614
         Version           :  1.02
     The generated drivers are tested against the following:
@@ -49,13 +49,13 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "eusart.h"
-#include "pwm4.h"
 #include "pwm3.h"
-#include "tmr2.h"
-#include "pwm1.h"
-#include "tmr4.h"
 #include "tmr6.h"
+#include "pwm4.h"
+#include "tmr4.h"
+#include "eusart.h"
+#include "pwm1.h"
+#include "tmr2.h"
 
 #define _XTAL_FREQ  4000000
 
@@ -87,7 +87,6 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 
 
-        
 
 #endif	/* MCC_H */
 /**

@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.0
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16LF1614
         Driver Version    :  1.02
     The generated drivers are tested against the following:
@@ -73,7 +73,7 @@
 
 void SYSTEM_Initialize(void)
 {
-    
+
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     PWM1_Initialize();
@@ -96,7 +96,6 @@ void OSCILLATOR_Initialize(void)
 }
 
 
-        
 /**
  End of File
 */
