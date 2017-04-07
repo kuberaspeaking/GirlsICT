@@ -103,6 +103,16 @@
  */
 static uint8_t bubble_address = 0;
 /* 
+ * bubble address
+ */
+static uint8_t bubble_pair_address = 190;
+
+/* 
+ * bubble current routine
+ */
+routine_item_t* current_routine_array;
+
+/* 
  * Color table
  */
 static const strRGB_t color_table[all_colors_num] = {
@@ -193,19 +203,31 @@ uint8_t get_bubble_address(void){
     return bubble_address;
 }
 
+/* setter and getter for bubble pair address 
+ * the address value is in the range of 8bits
+ */
+
+void set_bubble_pair_address(uint8_t address){
+    bubble_pair_address = address;
+}
+
+uint8_t get_bubble_pair_address(void){
+    return bubble_pair_address;
+}
+
 /*
  * receive the bubble address from the UART
  */
-bool receive_buuble_address(uint8_t* address){
+bool receive_bubble_address(uint8_t* address){
     bool add_check =false;
     uint8_t start_frame = 0x0;
-    while(!EUSART_DataReady) {
+    if(EUSART_DataReady) {
       start_frame = EUSART_Read();
       if (start_frame == START_WORD){
-          while(!EUSART_DataReady) {
+          if(EUSART_DataReady) {
             *address = EUSART_Read();
+            add_check = true;
           }
-          add_check = true;
       }
     }
     return add_check;  
@@ -216,9 +238,9 @@ bool receive_buuble_address(uint8_t* address){
  */
 bool send_buuble_address(uint8_t* address){
     bool add_check =false;
-    while(!EUSART_DataReady) {
+    if(EUSART_DataReady) {
         EUSART_Write(START_WORD);
-        while(!EUSART_DataReady) {
+        if(EUSART_DataReady) {
           EUSART_Write(*address);
           add_check = true;
         }
@@ -230,23 +252,29 @@ bool send_buuble_address(uint8_t* address){
  * determine the class of the bubble
  */
 
-bubble_class_t detect_bubble_class(){
+bubble_class_t detect_bubble_class(uint8_t address){
     bubble_class_t bubble_class = uninitialized_bubble;
  
-    if (bubble_address == 0){
+    if (address == 0){
         bubble_class = uninitialized_bubble;
     }
-    else if(bubble_address < MENTOR_ADDRESS_RANGE){
+    else if(address < MENTOR_ADDRESS_RANGE){
         bubble_class = mentor_bubble;
     }
-    else if(bubble_address < TREASURE_ADDRESS_RANGE){
+    else if(address < TREASURE_ADDRESS_RANGE){
         bubble_class = treasure_bubble;
     }
-    else if(bubble_address < SPECIAL_ADDRESS_RANGE){
+    else if(address < SPECIAL_ADDRESS_RANGE){
         bubble_class = special_bubble;
     }
-    else if(bubble_address < STUDENT_ADDRESS_RANGE){
-        bubble_class = student_bubble;
+    else if(address < STUDENT_ADDRESS_RANGE){
+        if(address == bubble_pair_address){
+            bubble_class = paired_bubble;
+        }
+        else
+        {
+            bubble_class = student_bubble;
+        }   
     }
     else {
         bubble_class = unknown_bubble;
@@ -270,14 +298,14 @@ static void perform_action(routine_item_t item){
     // TODO: need to add interrupts for slow delay time 
     // quick fix: limit delay time to 1 second
     uint16_t delay_time = 0;
-    if(item.time_ms >1000){
+    if(item.action_duration_ms >1000){
         delay_time = 1000;
     }
     else{
-        delay_time = item.time_ms;
+        delay_time = item.action_duration_ms;
     } 
-    
-   switch(item.action){
+    static uint8_t loop_direction = 1;
+    switch(item.action){
         case color_off:
            load_color(get_color_val(off),item.b_level);
            break;
@@ -289,7 +317,7 @@ static void perform_action(routine_item_t item){
             __delay_ms(delay_time);
             load_color(get_color_val(off),item.b_level);
             break;
-       case color_flash: 
+        case color_flash: 
             load_color(get_color_val(item.color),item.b_level);
             __delay_ms(delay_time/2);
             load_color(get_color_val(off),item.b_level);
@@ -298,8 +326,21 @@ static void perform_action(routine_item_t item){
             __delay_ms(delay_time/2);
             load_color(get_color_val(off),item.b_level);
             __delay_ms(delay_time/2);
-           break; 
-       default:
+           break;
+       case loop_brigtness:           
+           item.b_level += loop_direction;
+           if(item.b_level >= level_num ){
+            item.b_level -= 2*loop_direction;   
+            loop_direction = -1;
+           }
+           else if(item.b_level < Highest) {
+             item.b_level -= 2*loop_direction;   
+            loop_direction = 1;  
+               
+           }
+           break;
+           
+        default:
            load_color(get_color_val(item.color),item.b_level);
            break;
            
@@ -310,8 +351,78 @@ static void perform_action(routine_item_t item){
     * execute a list of routine items
     */
    
-   void excute_routine(routine_item_t* items){
-       for(int i =0; i< items->num_of_repeats; i++){
-           perform_action(items[i]);
+   void excute_next_routine_item(routine_item_t* items){
+       static uint8_t current_index = -1;
+       static uint8_t current_num_of_repeats = 0;
+       if(current_num_of_repeats > 0){
+           // fix routine end action
+           perform_action(items[current_index]);
+           current_num_of_repeats--;
+       }
+       else
+       {
+          current_num_of_repeats = 0;
+          current_index ++;
+          if (current_index >= MAX_ROUTINE_SIZE){
+              current_index = 0;
+          }
+          if(current_index == 0){
+              current_num_of_repeats = items[current_index].num_of_repeats;
+          }
        }
    }
+  
+   
+   void change_routine_array(bubble_class_t bubble_class){
+        routine_item_t* routine_array[num_of_bubble_classes] = {
+            error_routine,
+            mentor_bubble_routine,
+            student_bubble_routine,
+            treasure_bubble_routine,
+            special_bubble_routine,
+            paired_bubble_routine,
+            error_routine
+        };
+       current_routine_array = routine_array[bubble_class];
+   }
+
+   routine_item_t* get_bubble_routine(){
+       return current_routine_array;
+   }
+   
+   
+/*
+ * perform communication routines
+ */
+   void communicate_with_bubbles(){
+        uint8_t address;
+        bool send_check = false, receive_check = false; 
+        
+        for(int i=0; i<MAX_SEND_TRIES ; i++){
+            address = get_bubble_address();
+            if(send_buuble_address(&address)){
+                send_check = true;
+                break;
+            }
+            else
+            {
+                send_check = false; 
+            }
+        }
+        
+        for(int i=0; i<MAX_RECEIVE_TRIES ; i++){
+            if(receive_bubble_address(&address)){
+                change_routine_array(detect_bubble_class(address));
+                receive_check = true;
+                break;
+            }
+            else 
+            {
+                receive_check = false;
+            }
+        }
+//        return (receive_check && send_check);
+   }
+   
+   
+   

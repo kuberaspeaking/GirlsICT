@@ -6,7 +6,6 @@
  */
 #include "Library.h"
 
-#define ROUTINE_SIZE 10
 
 int main(void) {
 #ifdef __XC8
@@ -15,9 +14,13 @@ int main(void) {
     system_init();
 #endif
     
-    routine_item_t items[ROUTINE_SIZE];
-    excute_routine(items);
-    
+    routine_item_t* items = get_bubble_routine();
+     
+    while(1)
+    {        
+        communicate_with_bubbles();
+        excute_next_routine_item(items);
+    }  
 
     return 0;
 }

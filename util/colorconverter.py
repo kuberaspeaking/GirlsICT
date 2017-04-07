@@ -1,4 +1,4 @@
-# The load_color function takes RGB values between 0-1023 with 0 being
+# The load_color function takes RGB values between 0-255 with 0 being
 # brightest. This function converts the basic colors from
 # http://www.rapidtables.com/web/color/RGB_Color.htm
 
