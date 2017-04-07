@@ -205,3 +205,11 @@ bubble_class_t detect_bubble_class(){
     }
     return bubble_class;
 }
+
+/*
+ * Return color value from colors lookup table
+ */
+
+strRGB_t get_color_val(colors_names_t color){
+    return color_table[color];
+}

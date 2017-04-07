@@ -113,6 +113,7 @@ void disable_address_detection();
 void set_bubble_address(uint8_t address);
 uint8_t get_bubble_address(void);
 bubble_class_t detect_bubble_class(void);
+strRGB_t get_color_val(colors_names_t color);
 
 #ifdef	__cplusplus
 }
