@@ -106,34 +106,34 @@ static uint8_t bubble_address = 0;
  * Color table
  */
 static const strRGB_t color_table[all_colors_num] = {
-  {1023, 1023, 1023},
-  {3, 3, 3},
-  {3, 1023, 1023},
-  {1023, 3, 1023},
-  {1023, 1023, 3},
-  {3, 3, 1023},
-  {1023, 3, 3},
-  {3, 1023, 3},
-  {255, 255, 255},
-  {511, 511, 511},
-  {511, 1023, 1023},
-  {511, 511, 1023},
-  {1023, 511, 1023},
-  {511, 1023, 511},
-  {1023, 511, 511},
-  {1023, 1023, 511}
+    {255, 255, 255}, //off
+    {0, 0, 0},       //White
+    {0, 255, 255},   //Red
+    {255, 0, 255},   //Lime
+    {255, 255, 0},   //Blue
+    {0, 0, 255},     //Yellow
+    {255, 0, 0},     //Cyan
+    {0, 255, 0},     //Magenta
+    {63, 63, 63},    //Silver
+    {127, 127, 127}, //Gray
+    {127, 255, 255}, //Maroon
+    {127, 127, 255}, //Olive
+    {255, 127, 255}, //Green
+    {127, 255, 127}, //Purple
+    {255, 127, 127}, //Teal
+    {255, 255, 127}, //Navy
 };
 
 /* 
  * color values is 10 bit resolution
  * so values ranges from 0 - 1023
  */
-void load_color(strRGB_t RGB){
+void load_color(strRGB_t RGB, RGB_brightness_level_t b_level){
     if (((RGB.Red >= PWM_MIN) && (RGB.Red <= PWM_MAX)) && ((RGB.Green >= PWM_MIN) && (RGB.Green <= PWM_MAX)) && ((RGB.Blue >= PWM_MIN) && (RGB.Blue <= PWM_MAX)))
     {
-        PWM1_LoadDutyValue(RGB.Red);
-        PWM3_LoadDutyValue(RGB.Green);
-        PWM4_LoadDutyValue(RGB.Blue);
+        PWM1_LoadDutyValue(RGB.Red*b_level);
+        PWM3_LoadDutyValue(RGB.Green*b_level);
+        PWM4_LoadDutyValue(RGB.Blue*b_level);
     }
     else
     {
@@ -171,12 +171,12 @@ void comm_control(comm_control_t control_word){
  * to receive color data
  */
 
-void enable_address_detection(){
+static void enable_address_detection(){
     comm_control(comm_9bit_mode);
     comm_control(comm_address_detection_on);
 }
 
-void disable_address_detection(){
+static void disable_address_detection(){
     comm_control(comm_8bit_mode);
     comm_control(comm_address_detection_off); 
 }
@@ -191,6 +191,39 @@ void set_bubble_address(uint8_t address){
 
 uint8_t get_bubble_address(void){
     return bubble_address;
+}
+
+/*
+ * receive the bubble address from the UART
+ */
+bool receive_buuble_address(uint8_t* address){
+    bool add_check =false;
+    uint8_t start_frame = 0x0;
+    while(!EUSART_DataReady) {
+      start_frame = EUSART_Read();
+      if (start_frame == START_WORD){
+          while(!EUSART_DataReady) {
+            *address = EUSART_Read();
+          }
+          add_check = true;
+      }
+    }
+    return add_check;  
+}
+
+/*
+ * send the bubble address from the UART
+ */
+bool send_buuble_address(uint8_t* address){
+    bool add_check =false;
+    while(!EUSART_DataReady) {
+        EUSART_Write(START_WORD);
+        while(!EUSART_DataReady) {
+          EUSART_Write(*address);
+          add_check = true;
+        }
+    }
+    return add_check;  
 }
 
 /* 
@@ -225,6 +258,60 @@ bubble_class_t detect_bubble_class(){
  * Return color value from colors lookup table
  */
 
-strRGB_t get_color_val(colors_names_t color){
+static strRGB_t get_color_val(colors_names_t color){
     return color_table[color];
 }
+
+/*
+ * do new action
+ */
+
+static void perform_action(routine_item_t item){
+    // TODO: need to add interrupts for slow delay time 
+    // quick fix: limit delay time to 1 second
+    uint16_t delay_time = 0;
+    if(item.time_ms >1000){
+        delay_time = 1000;
+    }
+    else{
+        delay_time = item.time_ms;
+    } 
+    
+   switch(item.action){
+        case color_off:
+           load_color(get_color_val(off),item.b_level);
+           break;
+        case color_on:
+           load_color(get_color_val(item.color),item.b_level);
+           break;
+        case color_one_time:
+            load_color(get_color_val(item.color),item.b_level);
+            __delay_ms(delay_time);
+            load_color(get_color_val(off),item.b_level);
+            break;
+       case color_flash: 
+            load_color(get_color_val(item.color),item.b_level);
+            __delay_ms(delay_time/2);
+            load_color(get_color_val(off),item.b_level);
+            __delay_ms(delay_time/2);
+            load_color(get_color_val(item.color),item.b_level);
+            __delay_ms(delay_time/2);
+            load_color(get_color_val(off),item.b_level);
+            __delay_ms(delay_time/2);
+           break; 
+       default:
+           load_color(get_color_val(item.color),item.b_level);
+           break;
+           
+   }
+}
+   
+   /*
+    * execute a list of routine items
+    */
+   
+   void excute_routine(routine_item_t* items){
+       for(int i =0; i< items->num_of_repeats; i++){
+           perform_action(items[i]);
+       }
+   }

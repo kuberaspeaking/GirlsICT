@@ -33,11 +33,18 @@
 
 
 #ifdef __XC8
-#include <xc.h> // include processor files - each processor file is guarded.  
 #include "mcc_generated_files/mcc.h"
 #else
 #include <pic16lf1614.h> // Contains config addresses and options
 #include <stdint.h> //Needed for uint16_t
+// Various fuses
+
+static __code uint16_t __at (_CONFIG1) configword1 = _CLKOUTEN_ON & 
+  _BOREN_OFF & _PWRTE_ON & _FOSC_INTOSC;
+
+//static __code uint16_t __at (_CONFIG2) configword2 = _LVP_OFF;
+
+static __code uint16_t __at (_CONFIG3) configword3 = _WDTE_OFF;
 #endif
 
 #ifdef	__cplusplus
@@ -52,14 +59,16 @@ extern "C" {
 #define SPECIAL_ADDRESS_RANGE 35
 #define STUDENT_ADDRESS_RANGE 255    
 
+#define START_WORD 0b11001100
+    
 /*
  * PWM limits
  */  
-#define PWM_MAX 1023
+#define PWM_MAX 255
 #define PWM_MIN 0    
     
 /*
- * to call communication control words
+ * IR communication control words
  */
 typedef enum comm_control{
     comm_on=0,
@@ -82,6 +91,10 @@ typedef enum bubble_class {
     unknown_bubble
 }bubble_class_t;
 
+/*
+ * used to recall the index of the color value in the color lookup table
+ */
+
 typedef enum colors_names {
     off = 0,	
     White,	
@@ -99,8 +112,25 @@ typedef enum colors_names {
     Purple,	
     Teal,	
     Navy,   
-    all_colors_num       
+    all_colors_num
 }colors_names_t;
+
+typedef enum RGB_brightness_level{
+    Highest=1,
+    high,
+    low,
+    lowest
+}RGB_brightness_level_t;
+
+/*
+ * to define routine available actions 
+ */
+typedef enum routine_action {
+    color_off = 0,
+    color_on,
+    color_flash,
+    color_one_time,       
+}routine_action_t;
 
 /*
  * store the RGB values
@@ -108,8 +138,20 @@ typedef enum colors_names {
 typedef struct strRGB{
     uint16_t Red;
     uint16_t Green;
-    uint16_t Blue;           
+    uint16_t Blue; 
 }strRGB_t;
+
+
+/*
+ * Store a routine Item
+ */
+typedef struct routine_item {
+   colors_names_t color;            // to store color RGB values
+   RGB_brightness_level_t b_level;  // to store brightness level
+   uint16_t time_ms;                // to store action time (delay, flash ...etc.)
+   routine_action_t action;         // to store the action type
+   uint8_t num_of_repeats;          // to store how many times this action is repeated
+}routine_item_t;
 
 #ifndef __XC8
  void system_init(void);
@@ -119,15 +161,17 @@ typedef struct strRGB{
 
 /*Project APIs*/
 
-void load_color(strRGB_t RGB);
+//void load_color(strRGB_t RGB);
 void comm_control(comm_control_t control_word);
-void enable_address_detection();
-void disable_address_detection();
+//void enable_address_detection();
+//void disable_address_detection();
 void set_bubble_address(uint8_t address);
 uint8_t get_bubble_address(void);
 bubble_class_t detect_bubble_class(void);
-strRGB_t get_color_val(colors_names_t color);
-
+//strRGB_t get_color_val(colors_names_t color);
+//void perform_action(routine_item_t item);
+void excute_routine(routine_item_t* items);
+bool receive_buuble_address(uint8_t* address);
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */
