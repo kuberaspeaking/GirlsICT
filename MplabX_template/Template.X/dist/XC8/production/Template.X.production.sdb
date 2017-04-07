@@ -1,0 +1,653 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16LF1614 ]
+[d frameptr 6 ]
+"93 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr6.c
+[e E10772 . `uc
+TMR6_ROP_STARTS_TMRON 0
+TMR6_ROP_STARTS_TMRON_ERSHIGH 1
+TMR6_ROP_STARTS_TMRON_ERSLOW 2
+TMR6_ROP_RESETS_ERSBOTHEDGE 3
+TMR6_ROP_RESETS_ERSRISINGEDGE 4
+TMR6_ROP_RESETS_ERSFALLINGEDGE 5
+TMR6_ROP_RESETS_ERSLOW 6
+TMR6_ROP_RESETS_ERSHIGH 7
+TMR6_OS_STARTS_TMRON 8
+TMR6_OS_STARTS_ERSRISINGEDGE 9
+TMR6_OS_STARTS_ERSFALLINGEDGE 10
+TMR6_OS_STARTS_ERSBOTHEDGE 11
+TMR6_OS_STARTS_ERSFIRSTRISINGEDGE 12
+TMR6_OS_STARTS_ERSFIRSTFALLINGEDGE 13
+TMR6_OS_STARTS_ERSRISINGEDGEDETECT 14
+TMR6_OS_STARTS_ERSFALLINGEDGEDETECT 15
+TMR6_OS_STARTS_TMRON_ERSHIGH 22
+TMR6_OS_STARTS_TMRON_ERSLOW 23
+TMR6_MS_STARTS_TMRON_ERSRISINGEDGEDETECT 17
+TMR6_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT 18
+TMR6_MS_STARTS_TMRON_ERSBOTHEDGE 19
+]
+"99
+[e E10795 . `uc
+TMR6_T6IN 0
+TMR6_C1_OUT_SYNC 1
+TMR6_C2_OUT_SYNC 2
+TMR6_CCP1_OUT 3
+TMR6_CCP2_OUT 4
+TMR6_T2POSTSCALED 5
+TMR6_T4POSTSCALED 6
+TMR6_RESERVED 7
+TMR6_ZCD1_OUTPUT 8
+TMR6_LC1_OUT 9
+TMR6_LC2_OUT 10
+TMR6_PWM3_OUT 13
+TMR6_PWM4_OUT 14
+]
+"93 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr2.c
+[e E10772 . `uc
+TMR2_ROP_STARTS_TMRON 0
+TMR2_ROP_STARTS_TMRON_ERSHIGH 1
+TMR2_ROP_STARTS_TMRON_ERSLOW 2
+TMR2_ROP_RESETS_ERSBOTHEDGE 3
+TMR2_ROP_RESETS_ERSRISINGEDGE 4
+TMR2_ROP_RESETS_ERSFALLINGEDGE 5
+TMR2_ROP_RESETS_ERSLOW 6
+TMR2_ROP_RESETS_ERSHIGH 7
+TMR2_OS_STARTS_TMRON 8
+TMR2_OS_STARTS_ERSRISINGEDGE 9
+TMR2_OS_STARTS_ERSFALLINGEDGE 10
+TMR2_OS_STARTS_ERSBOTHEDGE 11
+TMR2_OS_STARTS_ERSFIRSTRISINGEDGE 12
+TMR2_OS_STARTS_ERSFIRSTFALLINGEDGE 13
+TMR2_OS_STARTS_ERSRISINGEDGEDETECT 14
+TMR2_OS_STARTS_ERSFALLINGEDGEDETECT 15
+TMR2_OS_STARTS_TMRON_ERSHIGH 22
+TMR2_OS_STARTS_TMRON_ERSLOW 23
+TMR2_MS_STARTS_TMRON_ERSRISINGEDGEDETECT 17
+TMR2_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT 18
+TMR2_MS_STARTS_TMRON_ERSBOTHEDGE 19
+]
+"99
+[e E10795 . `uc
+TMR2_T2IN 0
+TMR2_C1_OUT_SYNC 1
+TMR2_C2_OUT_SYNC 2
+TMR2_CCP1_OUT 3
+TMR2_CCP2_OUT 4
+TMR2_RESERVED 5
+TMR2_T4POSTSCALED 6
+TMR2_T6POSTSCALED 7
+TMR2_ZCD1_OUTPUT 8
+TMR2_LC1_OUT 9
+TMR2_LC2_OUT 10
+TMR2_PWM3_OUT 13
+TMR2_PWM4_OUT 14
+]
+"93 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr4.c
+[e E10772 . `uc
+TMR4_ROP_STARTS_TMRON 0
+TMR4_ROP_STARTS_TMRON_ERSHIGH 1
+TMR4_ROP_STARTS_TMRON_ERSLOW 2
+TMR4_ROP_RESETS_ERSBOTHEDGE 3
+TMR4_ROP_RESETS_ERSRISINGEDGE 4
+TMR4_ROP_RESETS_ERSFALLINGEDGE 5
+TMR4_ROP_RESETS_ERSLOW 6
+TMR4_ROP_RESETS_ERSHIGH 7
+TMR4_OS_STARTS_TMRON 8
+TMR4_OS_STARTS_ERSRISINGEDGE 9
+TMR4_OS_STARTS_ERSFALLINGEDGE 10
+TMR4_OS_STARTS_ERSBOTHEDGE 11
+TMR4_OS_STARTS_ERSFIRSTRISINGEDGE 12
+TMR4_OS_STARTS_ERSFIRSTFALLINGEDGE 13
+TMR4_OS_STARTS_ERSRISINGEDGEDETECT 14
+TMR4_OS_STARTS_ERSFALLINGEDGEDETECT 15
+TMR4_OS_STARTS_TMRON_ERSHIGH 22
+TMR4_OS_STARTS_TMRON_ERSLOW 23
+TMR4_MS_STARTS_TMRON_ERSRISINGEDGEDETECT 17
+TMR4_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT 18
+TMR4_MS_STARTS_TMRON_ERSBOTHEDGE 19
+]
+"99
+[e E10795 . `uc
+TMR4_T4IN 0
+TMR4_C1_OUT_SYNC 1
+TMR4_C2_OUT_SYNC 2
+TMR4_CCP1_OUT 3
+TMR4_CCP2_OUT 4
+TMR4_T2POSTSCALED 5
+TMR4_RESERVED 6
+TMR4_T6POSTSCALED 7
+TMR4_ZCD1_OUTPUT 8
+TMR4_LC1_OUT 9
+TMR4_LC2_OUT 10
+TMR4_PWM3_OUT 13
+TMR4_PWM4_OUT 14
+]
+"125 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\Library.c
+[e E10998 comm_control `uc
+comm_on 0
+comm_off 1
+comm_address_detection_on 2
+comm_address_detection_off 3
+comm_8bit_mode 4
+comm_9bit_mode 5
+]
+"181
+[e E11006 bubble_class `uc
+uninitialized_bubble 0
+mentor_bubble 1
+student_bubble 2
+treasure_bubble 3
+special_bubble 4
+unknown_bubble 5
+]
+"62 E:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 E:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"125 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\Library.c
+[v _comm_control comm_control `(v  1 e 1 0 ]
+"23 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"55 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+"74 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"88
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"51 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm1.c
+[v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
+"80
+[v _PWM1_LoadDutyValue PWM1_LoadDutyValue `(v  1 e 1 0 ]
+"57 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm3.c
+[v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
+"74
+[v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
+"57 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm4.c
+[v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
+"74
+[v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+"104
+[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
+"115
+[v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
+"126
+[v _TMR2_Counter8BitGet TMR2_Counter8BitGet `(uc  1 e 1 0 ]
+"140
+[v _TMR2_Counter8BitSet TMR2_Counter8BitSet `(v  1 e 1 0 ]
+"151
+[v _TMR2_Period8BitSet TMR2_Period8BitSet `(v  1 e 1 0 ]
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr4.c
+[v _TMR4_Initialize TMR4_Initialize `(v  1 e 1 0 ]
+"104
+[v _TMR4_Start TMR4_Start `(v  1 e 1 0 ]
+"115
+[v _TMR4_Stop TMR4_Stop `(v  1 e 1 0 ]
+"126
+[v _TMR4_Counter8BitGet TMR4_Counter8BitGet `(uc  1 e 1 0 ]
+"140
+[v _TMR4_Counter8BitSet TMR4_Counter8BitSet `(v  1 e 1 0 ]
+"151
+[v _TMR4_Period8BitSet TMR4_Period8BitSet `(v  1 e 1 0 ]
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr6.c
+[v _TMR6_Initialize TMR6_Initialize `(v  1 e 1 0 ]
+"104
+[v _TMR6_Start TMR6_Start `(v  1 e 1 0 ]
+"115
+[v _TMR6_Stop TMR6_Stop `(v  1 e 1 0 ]
+"126
+[v _TMR6_Counter8BitGet TMR6_Counter8BitGet `(uc  1 e 1 0 ]
+"140
+[v _TMR6_Counter8BitSet TMR6_Counter8BitSet `(v  1 e 1 0 ]
+"151
+[v _TMR6_Period8BitSet TMR6_Period8BitSet `(v  1 e 1 0 ]
+[s S281 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"527 E:\Program Files (x86)\Microchip\xc8\v1.40\include\pic16lf1614.h
+[u S290 . 1 `S281 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES290  1 e 1 @16 ]
+[s S26 . 1 `uc 1 CCP2IF 1 0 :1:0 
+`uc 1 TMR4IF 1 0 :1:1 
+`uc 1 TMR6IF 1 0 :1:2 
+`uc 1 BCL1IF 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 C1IF 1 0 :1:5 
+`uc 1 C2IF 1 0 :1:6 
+]
+"587
+[u S34 . 1 `S26 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES34  1 e 1 @17 ]
+"974
+[v _T2TMR T2TMR `VEuc  1 e 1 @26 ]
+"979
+[v _TMR2 TMR2 `VEuc  1 e 1 @26 ]
+"1027
+[v _T2PR T2PR `VEuc  1 e 1 @27 ]
+"1032
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"1080
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+[s S169 . 1 `uc 1 OUTPS 1 0 :4:0 
+`uc 1 CKPS 1 0 :3:4 
+`uc 1 ON 1 0 :1:7 
+]
+"1116
+[s S173 . 1 `uc 1 OUTPS0 1 0 :1:0 
+`uc 1 OUTPS1 1 0 :1:1 
+`uc 1 OUTPS2 1 0 :1:2 
+`uc 1 OUTPS3 1 0 :1:3 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+`uc 1 CKPS2 1 0 :1:6 
+]
+[s S438 . 1 `uc 1 T2OUTPS 1 0 :4:0 
+`uc 1 T2CKPS 1 0 :3:4 
+`uc 1 T2ON 1 0 :1:7 
+]
+[s S442 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
+`uc 1 T2OUTPS1 1 0 :1:1 
+`uc 1 T2OUTPS2 1 0 :1:2 
+`uc 1 T2OUTPS3 1 0 :1:3 
+`uc 1 T2CKPS0 1 0 :1:4 
+`uc 1 T2CKPS1 1 0 :1:5 
+`uc 1 T2CKPS2 1 0 :1:6 
+`uc 1 TMR2ON 1 0 :1:7 
+]
+[u S451 . 1 `S169 1 . 1 0 `S173 1 . 1 0 `S438 1 . 1 0 `S442 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES451  1 e 1 @28 ]
+"1225
+[v _T2HLT T2HLT `VEuc  1 e 1 @29 ]
+[s S71 . 1 `uc 1 MODE 1 0 :5:0 
+`uc 1 CKSYNC 1 0 :1:5 
+`uc 1 CKPOL 1 0 :1:6 
+`uc 1 PSYNC 1 0 :1:7 
+]
+"1258
+[s S76 . 1 `uc 1 MODE0 1 0 :1:0 
+`uc 1 MODE1 1 0 :1:1 
+`uc 1 MODE2 1 0 :1:2 
+`uc 1 MODE3 1 0 :1:3 
+`uc 1 MODE4 1 0 :1:4 
+]
+[s S339 . 1 `uc 1 T2MODE 1 0 :5:0 
+`uc 1 T2CKSYNC 1 0 :1:5 
+`uc 1 T2CKPOL 1 0 :1:6 
+`uc 1 T2PSYNC 1 0 :1:7 
+]
+[s S344 . 1 `uc 1 T2MODE0 1 0 :1:0 
+`uc 1 T2MODE1 1 0 :1:1 
+`uc 1 T2MODE2 1 0 :1:2 
+`uc 1 T2MODE3 1 0 :1:3 
+`uc 1 T2MODE4 1 0 :1:4 
+]
+[u S350 . 1 `S71 1 . 1 0 `S76 1 . 1 0 `S339 1 . 1 0 `S344 1 . 1 0 ]
+[v _T2HLTbits T2HLTbits `VES350  1 e 1 @29 ]
+"1352
+[v _T2CLKCON T2CLKCON `VEuc  1 e 1 @30 ]
+"1431
+[v _T2RST T2RST `VEuc  1 e 1 @31 ]
+[s S135 . 1 `uc 1 RSEL 1 0 :4:0 
+]
+"1456
+[s S137 . 1 `uc 1 RSEL0 1 0 :1:0 
+`uc 1 RSEL1 1 0 :1:1 
+`uc 1 RSEL2 1 0 :1:2 
+`uc 1 RSEL3 1 0 :1:3 
+]
+[s S399 . 1 `uc 1 T2RSEL 1 0 :4:0 
+]
+[s S401 . 1 `uc 1 T2RSEL0 1 0 :1:0 
+`uc 1 T2RSEL1 1 0 :1:1 
+`uc 1 T2RSEL2 1 0 :1:2 
+`uc 1 T2RSEL3 1 0 :1:3 
+]
+[u S406 . 1 `S135 1 . 1 0 `S137 1 . 1 0 `S399 1 . 1 0 `S401 1 . 1 0 ]
+[v _T2RSTbits T2RSTbits `VES406  1 e 1 @31 ]
+"1510
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1559
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S832 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1897
+[s S839 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S846 . 1 `S832 1 . 1 0 `S839 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES846  1 e 1 @149 ]
+"2017
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"2074
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2430
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2479
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"3067
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3113
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3320
+[v _RC1REG RC1REG `VEuc  1 e 1 @409 ]
+"3373
+[v _TX1REG TX1REG `VEuc  1 e 1 @410 ]
+"3445
+[v _SPBRGL SPBRGL `VEuc  1 e 1 @411 ]
+"3506
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @412 ]
+"3554
+[v _RC1STA RC1STA `VEuc  1 e 1 @413 ]
+[s S789 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3580
+[u S798 . 1 `S789 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES798  1 e 1 @413 ]
+"3635
+[v _RCSTA1bits RCSTA1bits `VES798  1 e 1 @413 ]
+"3733
+[v _TX1STA TX1STA `VEuc  1 e 1 @414 ]
+"3912
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @415 ]
+"4157
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"4214
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+"5662
+[v _ODCONA ODCONA `VEuc  1 e 1 @652 ]
+"5706
+[v _ODCONC ODCONC `VEuc  1 e 1 @654 ]
+"5761
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
+"5780
+[v _CCPR1H CCPR1H `VEuc  1 e 1 @658 ]
+"5799
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+[s S925 . 1 `uc 1 MODE 1 0 :4:0 
+`uc 1 FMT 1 0 :1:4 
+`uc 1 OUT 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"5836
+[s S931 . 1 `uc 1 MODE0 1 0 :1:0 
+`uc 1 MODE1 1 0 :1:1 
+`uc 1 MODE2 1 0 :1:2 
+`uc 1 MODE3 1 0 :1:3 
+]
+[s S936 . 1 `uc 1 CCP1MODE 1 0 :4:0 
+`uc 1 CCP1FMT 1 0 :1:4 
+`uc 1 CCP1OUT 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 CCP1EN 1 0 :1:7 
+]
+[s S942 . 1 `uc 1 CCP1MODE0 1 0 :1:0 
+`uc 1 CCP1MODE1 1 0 :1:1 
+`uc 1 CCP1MODE2 1 0 :1:2 
+`uc 1 CCP1MODE3 1 0 :1:3 
+]
+[s S947 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 P1M1 1 0 :1:7 
+]
+[u S950 . 1 `S925 1 . 1 0 `S931 1 . 1 0 `S936 1 . 1 0 `S942 1 . 1 0 `S947 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES950  1 e 1 @659 ]
+[s S893 . 1 `uc 1 CCP1TSEL 1 0 :2:0 
+`uc 1 CCP2TSEL 1 0 :2:2 
+`uc 1 P3TSEL 1 0 :2:4 
+`uc 1 P4TSEL 1 0 :2:6 
+]
+"6252
+[s S898 . 1 `uc 1 CCP1TSEL0 1 0 :1:0 
+`uc 1 CCP1TSEL1 1 0 :1:1 
+`uc 1 CCP2TSEL0 1 0 :1:2 
+`uc 1 CCP2TSEL1 1 0 :1:3 
+`uc 1 P3TSEL0 1 0 :1:4 
+`uc 1 P3TSEL1 1 0 :1:5 
+`uc 1 P4TSEL0 1 0 :1:6 
+`uc 1 P4TSEL1 1 0 :1:7 
+]
+[u S907 . 1 `S893 1 . 1 0 `S898 1 . 1 0 ]
+[v _CCPTMRSbits CCPTMRSbits `VES907  1 e 1 @670 ]
+"6851
+[v _T4TMR T4TMR `VEuc  1 e 1 @1043 ]
+"6856
+[v _TMR4 TMR4 `VEuc  1 e 1 @1043 ]
+"6904
+[v _T4PR T4PR `VEuc  1 e 1 @1044 ]
+"6909
+[v _PR4 PR4 `VEuc  1 e 1 @1044 ]
+"6957
+[v _T4CON T4CON `VEuc  1 e 1 @1045 ]
+"6993
+[s S686 . 1 `uc 1 T4OUTPS 1 0 :4:0 
+`uc 1 T4CKPS 1 0 :3:4 
+`uc 1 T4ON 1 0 :1:7 
+]
+[s S690 . 1 `uc 1 T4OUTPS0 1 0 :1:0 
+`uc 1 T4OUTPS1 1 0 :1:1 
+`uc 1 T4OUTPS2 1 0 :1:2 
+`uc 1 T4OUTPS3 1 0 :1:3 
+`uc 1 T4CKPS0 1 0 :1:4 
+`uc 1 T4CKPS1 1 0 :1:5 
+`uc 1 T4CKPS2 1 0 :1:6 
+`uc 1 TMR4ON 1 0 :1:7 
+]
+[u S699 . 1 `S169 1 . 1 0 `S173 1 . 1 0 `S686 1 . 1 0 `S690 1 . 1 0 ]
+[v _T4CONbits T4CONbits `VES699  1 e 1 @1045 ]
+"7102
+[v _T4HLT T4HLT `VEuc  1 e 1 @1046 ]
+"7135
+[s S587 . 1 `uc 1 T4MODE 1 0 :5:0 
+`uc 1 T4CKSYNC 1 0 :1:5 
+`uc 1 T4CKPOL 1 0 :1:6 
+`uc 1 T4PSYNC 1 0 :1:7 
+]
+[s S592 . 1 `uc 1 T4MODE0 1 0 :1:0 
+`uc 1 T4MODE1 1 0 :1:1 
+`uc 1 T4MODE2 1 0 :1:2 
+`uc 1 T4MODE3 1 0 :1:3 
+`uc 1 T4MODE4 1 0 :1:4 
+]
+[u S598 . 1 `S71 1 . 1 0 `S76 1 . 1 0 `S587 1 . 1 0 `S592 1 . 1 0 ]
+[v _T4HLTbits T4HLTbits `VES598  1 e 1 @1046 ]
+"7229
+[v _T4CLKCON T4CLKCON `VEuc  1 e 1 @1047 ]
+"7308
+[v _T4RST T4RST `VEuc  1 e 1 @1048 ]
+"7333
+[s S647 . 1 `uc 1 T4RSEL 1 0 :4:0 
+]
+[s S649 . 1 `uc 1 T4RSEL0 1 0 :1:0 
+`uc 1 T4RSEL1 1 0 :1:1 
+`uc 1 T4RSEL2 1 0 :1:2 
+`uc 1 T4RSEL3 1 0 :1:3 
+]
+[u S654 . 1 `S135 1 . 1 0 `S137 1 . 1 0 `S647 1 . 1 0 `S649 1 . 1 0 ]
+[v _T4RSTbits T4RSTbits `VES654  1 e 1 @1048 ]
+"7387
+[v _T6TMR T6TMR `VEuc  1 e 1 @1050 ]
+"7392
+[v _TMR6 TMR6 `VEuc  1 e 1 @1050 ]
+"7440
+[v _T6PR T6PR `VEuc  1 e 1 @1051 ]
+"7445
+[v _PR6 PR6 `VEuc  1 e 1 @1051 ]
+"7493
+[v _T6CON T6CON `VEuc  1 e 1 @1052 ]
+"7529
+[s S181 . 1 `uc 1 T6OUTPS 1 0 :4:0 
+`uc 1 T6CKPS 1 0 :3:4 
+`uc 1 T6ON 1 0 :1:7 
+]
+[s S185 . 1 `uc 1 T6OUTPS0 1 0 :1:0 
+`uc 1 T6OUTPS1 1 0 :1:1 
+`uc 1 T6OUTPS2 1 0 :1:2 
+`uc 1 T6OUTPS3 1 0 :1:3 
+`uc 1 T6CKPS0 1 0 :1:4 
+`uc 1 T6CKPS1 1 0 :1:5 
+`uc 1 T6CKPS2 1 0 :1:6 
+`uc 1 TMR6ON 1 0 :1:7 
+]
+[u S194 . 1 `S169 1 . 1 0 `S173 1 . 1 0 `S181 1 . 1 0 `S185 1 . 1 0 ]
+[v _T6CONbits T6CONbits `VES194  1 e 1 @1052 ]
+"7638
+[v _T6HLT T6HLT `VEuc  1 e 1 @1053 ]
+"7671
+[s S82 . 1 `uc 1 T6MODE 1 0 :5:0 
+`uc 1 T6CKSYNC 1 0 :1:5 
+`uc 1 T6CKPOL 1 0 :1:6 
+`uc 1 T6PSYNC 1 0 :1:7 
+]
+[s S87 . 1 `uc 1 T6MODE0 1 0 :1:0 
+`uc 1 T6MODE1 1 0 :1:1 
+`uc 1 T6MODE2 1 0 :1:2 
+`uc 1 T6MODE3 1 0 :1:3 
+`uc 1 T6MODE4 1 0 :1:4 
+]
+[u S93 . 1 `S71 1 . 1 0 `S76 1 . 1 0 `S82 1 . 1 0 `S87 1 . 1 0 ]
+[v _T6HLTbits T6HLTbits `VES93  1 e 1 @1053 ]
+"7765
+[v _T6CLKCON T6CLKCON `VEuc  1 e 1 @1054 ]
+"7844
+[v _T6RST T6RST `VEuc  1 e 1 @1055 ]
+"7869
+[s S142 . 1 `uc 1 T6RSEL 1 0 :4:0 
+]
+[s S144 . 1 `uc 1 T6RSEL0 1 0 :1:0 
+`uc 1 T6RSEL1 1 0 :1:1 
+`uc 1 T6RSEL2 1 0 :1:2 
+`uc 1 T6RSEL3 1 0 :1:3 
+]
+[u S149 . 1 `S135 1 . 1 0 `S137 1 . 1 0 `S142 1 . 1 0 `S144 1 . 1 0 ]
+[v _T6RSTbits T6RSTbits `VES149  1 e 1 @1055 ]
+"11028
+[v _PWM3DCL PWM3DCL `VEuc  1 e 1 @1559 ]
+"11093
+[v _PWM3DCH PWM3DCH `VEuc  1 e 1 @1560 ]
+"11262
+[v _PWM3CON PWM3CON `VEuc  1 e 1 @1561 ]
+"11317
+[v _PWM4DCL PWM4DCL `VEuc  1 e 1 @1562 ]
+"11382
+[v _PWM4DCH PWM4DCH `VEuc  1 e 1 @1563 ]
+"11551
+[v _PWM4CON PWM4CON `VEuc  1 e 1 @1564 ]
+"20304
+[v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3599 ]
+[s S868 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+]
+"20314
+[u S870 . 1 `S868 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES870  1 e 1 @3599 ]
+"21183
+[v _RXPPS RXPPS `VEuc  1 e 1 @3620 ]
+"21871
+[v _RC0PPS RC0PPS `VEuc  1 e 1 @3744 ]
+"21914
+[v _RC1PPS RC1PPS `VEuc  1 e 1 @3745 ]
+"21957
+[v _RC2PPS RC2PPS `VEuc  1 e 1 @3746 ]
+"22043
+[v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
+"25773
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"105 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\Library.c
+[v _bubble_address bubble_address `uc  1 s 1 bubble_address ]
+"23 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"30
+} 0
+"74 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"86
+} 0
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr6.c
+[v _TMR6_Initialize TMR6_Initialize `(v  1 e 1 0 ]
+{
+"90
+} 0
+"104
+[v _TMR6_Start TMR6_Start `(v  1 e 1 0 ]
+{
+"108
+} 0
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr4.c
+[v _TMR4_Initialize TMR4_Initialize `(v  1 e 1 0 ]
+{
+"90
+} 0
+"104
+[v _TMR4_Start TMR4_Start `(v  1 e 1 0 ]
+{
+"108
+} 0
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+{
+"90
+} 0
+"104
+[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
+{
+"108
+} 0
+"57 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm4.c
+[v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"57 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm3.c
+[v _PWM3_Initialize PWM3_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"63 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pwm1.c
+[v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
+{
+"78
+} 0
+"51 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"89
+[v PIN_MANAGER_Initialize@state state `uc  1 a 1 0 ]
+"106
+} 0
+"88 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"96
+} 0
+"55 E:\projects\girlsICT\GirlsICT\MplabX_template\Template.X\mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+{
+"74
+} 0
