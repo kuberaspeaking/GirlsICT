@@ -51,8 +51,16 @@ extern "C" {
 #define TREASURE_ADDRESS_RANGE 30
 #define SPECIAL_ADDRESS_RANGE 35
 #define STUDENT_ADDRESS_RANGE 255    
+
+/*
+ * PWM limits
+ */  
+#define PWM_MAX 1023
+#define PWM_MIN 0    
     
-    
+/*
+ * to call communication control words
+ */
 typedef enum comm_control{
     comm_on=0,
     comm_off,
@@ -60,9 +68,11 @@ typedef enum comm_control{
     comm_address_detection_off,
     comm_8bit_mode,
     comm_9bit_mode
-
 }comm_control_t;
 
+/*
+ * types of bubble nodes based on the stored address
+ */
 typedef enum bubble_class {
     uninitialized_bubble = 0,
     mentor_bubble,
@@ -72,15 +82,31 @@ typedef enum bubble_class {
     unknown_bubble
 }bubble_class_t;
 
+typedef enum colors_names {
+    off = 0,
+            
+    all_colors_num
+            
+}colors_names_t;
+
+/*
+ * store the RGB values
+ */
+typedef struct strRGB{
+    uint16_t Red;
+    uint16_t Green;
+    uint16_t Blue;           
+}strRGB_t;
 
 #ifndef __XC8
  void system_init(void);
 #endif
 
 
+
 /*Project APIs*/
 
-void load_color(uint16_t Red, uint16_t Green, uint16_t Blue);
+void load_color(strRGB_t RGB);
 void comm_control(comm_control_t control_word);
 void enable_address_detection();
 void disable_address_detection();

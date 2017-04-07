@@ -101,20 +101,24 @@
 /* 
  * bubble address
  */
-
 static uint8_t bubble_address = 0;
-
+/* 
+ * Color table
+ */
+static const strRGB_t color_table[all_colors_num] = {
+    {1023,1023,1023} //off
+};
 
 /* 
  * color values is 10 bit resolution
  * so values ranges from 0 - 1023
  */
-void load_color(uint16_t Red, uint16_t Green, uint16_t Blue){
-    if (((Red >= 0U) && (Red <= 1023U)) && ((Green >= 0U) && (Green <= 1023U)) && ((Blue >= 0U) && (Blue <= 1023U)))
+void load_color(strRGB_t RGB){
+    if (((RGB.Red >= PWM_MIN) && (RGB.Red <= PWM_MAX)) && ((RGB.Green >= PWM_MIN) && (RGB.Green <= PWM_MAX)) && ((RGB.Blue >= PWM_MIN) && (RGB.Blue <= PWM_MAX)))
     {
-        PWM1_LoadDutyValue(Red);
-        PWM3_LoadDutyValue(Green);
-        PWM4_LoadDutyValue(Blue);
+        PWM1_LoadDutyValue(RGB.Red);
+        PWM3_LoadDutyValue(RGB.Green);
+        PWM4_LoadDutyValue(RGB.Blue);
     }
     else
     {
