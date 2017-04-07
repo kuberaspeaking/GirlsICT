@@ -26,6 +26,13 @@ int main(void) {
 #else
     system_init();
 #endif
+    int i;
+    for (i = 0; i < all_colors_num; i++) {
+        strRGB_t color = get_color_val(i);
+        load_color(color);
+        __delay_ms(1000);
+    }
+
     return 0;
 }
 
