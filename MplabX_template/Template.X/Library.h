@@ -83,10 +83,23 @@ typedef enum bubble_class {
 }bubble_class_t;
 
 typedef enum colors_names {
-    off = 0,
-            
-    all_colors_num
-            
+    off = 0,	
+    White,	
+    Red,		
+    Lime,	
+    Blue,	
+    Yellow,	
+    Cyan, 	
+    Magenta,
+    Silver,	
+    Gray,	
+    Maroon,	
+    Olive,	
+    Green,	
+    Purple,	
+    Teal,	
+    Navy,   
+    all_colors_num       
 }colors_names_t;
 
 /*
