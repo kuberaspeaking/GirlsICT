@@ -48,6 +48,7 @@ static __code uint16_t __at (_CONFIG3) configword3 = _WDTE_OFF;
 #endif
 
 #include "routines_array.h"
+#include "routines_defs.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -108,7 +109,7 @@ typedef enum bubble_class {
 
 /*Project APIs*/
 
-//void load_color(strRGB_t RGB);
+void load_color(strRGB_t RGB, RGB_brightness_level_t b_level);
 void comm_control(comm_control_t control_word);
 //void enable_address_detection();
 //void disable_address_detection();

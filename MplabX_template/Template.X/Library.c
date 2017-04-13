@@ -100,7 +100,7 @@
 /*
  * PWM limits
  */  
-#define PWM_MAX 255
+#define PWM_MAX 1023
 #define PWM_MIN 0    
  
 /* 
@@ -112,7 +112,7 @@ static uint8_t bubble_address = 0;
  */
 static uint8_t bubble_pair_address = 190;
 
-static uint8_t current_index = -1;
+static int8_t current_index = -1;
 static uint8_t current_num_of_repeats = 0;
 static uint8_t loop_direction = 1;
 
@@ -129,40 +129,40 @@ const routine_item_t* routine_array[num_of_bubble_classes] = {
 /* 
  * bubble current routine
  */
-const routine_item_t* current_routine_array;
+const routine_item_t* current_routine_array = error_routine;
 
 /* 
  * Color table
  */
 static const strRGB_t color_table[all_colors_num] = {
-    {255, 255, 255}, //off
-    {0, 0, 0},       //White
-    {0, 255, 255},   //Red
-    {255, 0, 255},   //Lime
-    {255, 255, 0},   //Blue
-    {0, 0, 255},     //Yellow
-    {255, 0, 0},     //Cyan
-    {0, 255, 0},     //Magenta
-    {63, 63, 63},    //Silver
-    {127, 127, 127}, //Gray
-    {127, 255, 255}, //Maroon
-    {127, 127, 255}, //Olive
-    {255, 127, 255}, //Green
-    {127, 255, 127}, //Purple
-    {255, 127, 127}, //Teal
-    {255, 255, 127}, //Navy
+{1023, 1023, 1023}, //off
+{3, 3, 3},          //White
+{3, 1023, 1023},    //Red
+{1023, 3, 1023},    //Lime
+{1023, 1023, 3},    //Blue
+{3, 3, 1023},       //Yellow
+{1023, 3, 3},       //Cyan
+{3, 1023, 3},       //Magenta
+{255, 255, 255},    //Silver
+{511, 511, 511},    //Gray
+{511, 1023, 1023},  //Maroon
+{511, 511, 1023},   //Olive
+{1023, 511, 1023},  //Green
+{511, 1023, 511},   //Purple
+{1023, 511, 511},   //Teal
+{1023, 1023, 511},  //Navy
 };
 
 /* 
  * color values is 10 bit resolution
  * so values ranges from 0 - 1023
  */
-void load_color(strRGB_t RGB, RGB_brightness_level_t b_level){
-    if (((RGB.Red >= PWM_MIN) && (RGB.Red <= PWM_MAX)) && ((RGB.Green >= PWM_MIN) && (RGB.Green <= PWM_MAX)) && ((RGB.Blue >= PWM_MIN) && (RGB.Blue <= PWM_MAX)))
+static void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level){
+    if (((RGB->Red >= PWM_MIN) && (RGB->Red <= PWM_MAX)) && ((RGB->Green >= PWM_MIN) && (RGB->Green <= PWM_MAX)) && ((RGB->Blue >= PWM_MIN) && (RGB->Blue <= PWM_MAX)))
     {
-        PWM1_LoadDutyValue(RGB.Red*b_level);
-        PWM3_LoadDutyValue(RGB.Green*b_level);
-        PWM4_LoadDutyValue(RGB.Blue*b_level);
+        PWM1_LoadDutyValue(RGB->Red);
+        PWM3_LoadDutyValue(RGB->Green);
+        PWM4_LoadDutyValue(RGB->Blue);
     }
     else
     {
@@ -305,62 +305,84 @@ bubble_class_t detect_bubble_class(uint8_t address){
  * Return color value from colors lookup table
  */
 
-static strRGB_t get_color_val(colors_names_t color){
+ strRGB_t get_color_val(colors_names_t color){
     return color_table[color];
 }
 
+// void reset_routine_index(){
+//    current_index = -1;
+//    current_num_of_repeats = 0;
+//}
+   
 /*
  * do new action
  */
 
-static void perform_action(routine_item_t item){
+static void perform_action(routine_item_t* item){
     // TODO: need to add interrupts for slow delay time 
     // quick fix: limit delay time to 1 second
     uint16_t delay_time = 0;
-    if(item.action_duration_ms >1000){
+    if(item->action_duration_ms >1000){
         delay_time = 1000;
     }
     else{
-        delay_time = item.action_duration_ms;
+        delay_time = item->action_duration_ms;
     } 
     
-    switch(item.action){
+    strRGB_t color_str;
+    
+    switch(item->action){
         case color_off:
-           load_color(get_color_val(off),item.b_level);
+           color_str = get_color_val(off);
+           load_color(&color_str,lowest);
            break;
         case color_on:
-           load_color(get_color_val(item.color),item.b_level);
+           color_str = get_color_val(item->color);
+           load_color(&color_str,item->b_level);
            break;
         case color_one_time:
-            load_color(get_color_val(item.color),item.b_level);
+            color_str = get_color_val(item->color);
+            load_color(&color_str,item->b_level);
             __delay_ms(delay_time);
-            load_color(get_color_val(off),item.b_level);
+            color_str = get_color_val(off);
+            load_color(&color_str,lowest);
             break;
         case color_flash: 
-            load_color(get_color_val(item.color),item.b_level);
+            // first flash
+            color_str = get_color_val(item->color);
+            load_color(&color_str,item->b_level);
             __delay_ms(delay_time/2);
-            load_color(get_color_val(off),item.b_level);
+            color_str = get_color_val(off);
+            load_color(&color_str,lowest);
             __delay_ms(delay_time/2);
-            load_color(get_color_val(item.color),item.b_level);
+            // second flash
+            color_str = get_color_val(item->color);
+            load_color(&color_str,item->b_level);
             __delay_ms(delay_time/2);
-            load_color(get_color_val(off),item.b_level);
+            color_str = get_color_val(off);
+            load_color(&color_str,lowest);
             __delay_ms(delay_time/2);
            break;
        case loop_brigtness:           
-           item.b_level += loop_direction;
-           if(item.b_level >= level_num ){
-            item.b_level -= 2*loop_direction;   
+           item->b_level += loop_direction;
+           if(item->b_level >= level_num ){
+            item->b_level -= 2*loop_direction;   
             loop_direction = -1;
            }
-           else if(item.b_level < Highest) {
-             item.b_level -= 2*loop_direction;   
+           else if(item->b_level < Highest) {
+             item->b_level -= 2*loop_direction;   
             loop_direction = 1;  
                
            }
            break;
-           
+        case end_routine:
+            // reset routine array indices
+            current_index = -1;
+            current_num_of_repeats = 1;
+            break;
         default:
-           load_color(get_color_val(item.color),item.b_level);
+           color_str = get_color_val(off);
+           load_color(&color_str,lowest);
            break;
            
    }
@@ -374,26 +396,25 @@ static void perform_action(routine_item_t item){
        routine_item_t item = items[current_index];
        if(current_num_of_repeats > 0){           
            // fix routine end action
-           perform_action(item);
+           perform_action(&item);
            current_num_of_repeats--;
        }
        else
        {
-          current_num_of_repeats = 0;
-          current_index ++;
-          if (current_index >= MAX_ROUTINE_SIZE){
-              current_index = 0;
-          }
-          if(current_index == 0){
-              current_num_of_repeats = item.num_of_repeats;
-          }
+            current_index ++;
+            if (current_index >= MAX_ROUTINE_SIZE){
+                current_index = 0;
+            }
+            item = items[current_index];
+            current_num_of_repeats = item.num_of_repeats;
        }
    }
   
-   
 void change_routine_array(bubble_class_t bubble_class){
+    // reset routine array indeces 
     current_index = -1;
     current_num_of_repeats = 0;
+    // load new routine array
     current_routine_array = routine_array[bubble_class];      
 }
 

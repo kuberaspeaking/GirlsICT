@@ -40,7 +40,8 @@ typedef enum routine_action {
     color_on,
     color_flash,
     color_one_time,
-    loop_brigtness
+    loop_brigtness,
+    end_routine
 }routine_action_t;
 
 /*
