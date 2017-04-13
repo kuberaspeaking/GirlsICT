@@ -3,7 +3,7 @@
 DefaultArraySize = 10
 DefaultArraySizeText = '#define MAX_ROUTINE_SIZE '
 
-DefaultValues = [ 'Red', 'Highest', '1000', 'color_off', '1']
+DefaultValues = [ 'Red', 'Highest', '1000', 'color_off', '2']
 ArrayNames =[ 'static const routine_item_t mentor_bubble_routine[MAX_ROUTINE_SIZE]',
 'static const routine_item_t student_bubble_routine[MAX_ROUTINE_SIZE]',
 'static const routine_item_t treasure_bubble_routine[MAX_ROUTINE_SIZE]', 

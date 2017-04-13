@@ -39,9 +39,9 @@ NamesList=[
 ]		 
 			 
 def convertColor(colorTuple):
-    r = 255 - colorTuple[0]
-    g = 255 - colorTuple[1]
-    b = 255 - colorTuple[2]
+    r = 1023 - 4 * colorTuple[0]
+    g = 1023 - 4 * colorTuple[1]
+    b = 1023 - 4 * colorTuple[2]
     return str((r,g,b))
 
 convertedColorList = [convertColor(color) for color in colorlist]
