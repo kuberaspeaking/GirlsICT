@@ -387,7 +387,7 @@ static void perform_action(routine_item_t* item){
            
    }
 }
-   
+   (
    /*
     * execute a list of routine items
     */

@@ -17,7 +17,8 @@ int main(void) {
     const routine_item_t* items;
     items = get_bubble_routine();
     routine_item_t news;
-    
+    color_str = get_color_val(green);
+    load_color(&color_str,lowest);
     while(1)
     {        
         communicate_with_bubbles();
